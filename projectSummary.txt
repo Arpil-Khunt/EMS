@@ -1,0 +1,18 @@
+Employee Management System - Using MERN stack
+
+*flow of working
+i)npm create vite@latest
+ii)npm install react-data-table-component styled-components axios react-icons react-router-dom tailwindcss postcss autoprefixer
+
+iii)create folder inside that folder
+    npm init -y
+    npm install bcrypt cors express jsonwebtoken mongoose multer
+    nodemon path
+
+iv) create index.js
+
+v) add to package.js
+    type module 
+    start nodemon --env-file=.env index.js
+
+vi)create .env file
