@@ -1,0 +1,2 @@
+i) env variable expost under import.meta.env._varname_ -> listing .env var in .env file -> VITE_SOME_KEY=123
+   in production run the vite app using this flag -> NODE_ENV='production' so that all env varialbe coming under import.meta.env 

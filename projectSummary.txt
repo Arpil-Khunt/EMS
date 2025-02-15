@@ -2,7 +2,7 @@ Employee Management System - Using MERN stack
 
 *flow of working
 i)npm create vite@latest
-ii)npm install react-data-table-component styled-components axios react-icons react-router-dom tailwindcss postcss autoprefixer
+ii)npm install react-data-table-component styled-components axios react-icons react-router-dom tailwindcss@3  postcss autoprefixer
 
 iii)create folder inside that folder
     npm init -y
