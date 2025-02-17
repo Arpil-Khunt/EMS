@@ -10,7 +10,6 @@ export const verifyUser = async (req, res, next) => {
         .json({ success: false, error: "Token Not Provided" });
     } else {
       let decoded = await jwt.verify(token, process.env.JWT_KEY);
-      console.log(decoded);
       if (!decoded) {
         return res
           .status(404)
