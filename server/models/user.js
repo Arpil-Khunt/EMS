@@ -22,8 +22,8 @@ const userSchema = new Schema({
   profileImage: {
     type: String,
   },
-  createAt: { type: Date, default: Date.now() },
-  updatedAt: { type: Date, default: Date.now() },
+  createAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now },
 });
 
 const User = mongoose.model("User", userSchema);
