@@ -16,12 +16,14 @@ export const verifyUser = async (req, res, next) => {
           .json({ success: false, error: "Token Not Valid" });
       }
       const user = await User.findById(decoded._id).select("-password");
+
       if (!user) {
         return res
           .status(404)
           .json({ success: false, error: "User Not Found" });
       }
       req.user = user;
+
       next();
     }
   } catch (error) {

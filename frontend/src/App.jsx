@@ -1,14 +1,17 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
-import EmployeeDashboard from "./pages/EmployeeDashboard";
+
 import PrivateRoute from "./utils/PrivateRoute";
 import RoleBaseRoute from "./utils/RoleBaseRoute";
 import AdminSummary from "./components/dashboard/AdminSummary";
 import DepartmentList from "./components/department/DepartmentList";
 import EditDepartment from "./components/department/EditDepartment";
-import DeleteDepartment from "./components/department/DeleteDepartment";
 import AddDepartment from "./components/department/AddDepartment";
+import EmployeeList from "./components/employee/EmployeeList";
+import AddEmployee from "./components/employee/AddEmployee";
+import ViewEmployee from "./components/employee/ViewEmployee";
+import EditEmployee from "./components/employee/EditEmployee";
 function App() {
   return (
     <BrowserRouter>
@@ -28,7 +31,19 @@ function App() {
           <Route index element={<AdminSummary />}></Route>
           <Route
             path="/admin-dashboard/employees"
-            element={<EmployeeDashboard />}
+            element={<EmployeeList />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/add-employee"
+            element={<AddEmployee />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/employees/:_id"
+            element={<ViewEmployee />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/employees/edit/:_id"
+            element={<EditEmployee />}
           ></Route>
           <Route
             path="/admin-dashboard/departments"

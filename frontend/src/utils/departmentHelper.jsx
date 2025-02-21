@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 export const columns = [
-  { name: "S No", selector: (row) => row.sno },
-  { name: "Department Name", selector: (row) => row.dep_name, sortable: true },
+  { name: "S No", selector: (row) => row.sno, sortable: true },
+  {
+    name: "Department Name",
+    selector: (row) => row.dep_name,
+    sortable: true,
+  },
   { name: "Action", selector: (row) => row.action },
 ];
 
