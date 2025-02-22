@@ -7,8 +7,6 @@ const ViewEmployee = () => {
   const [employee, setEmployee] = useState(null);
 
   useEffect(() => {
-    console.log("inside useeffect");
-
     const fetchEmployees = async () => {
       try {
         const response = await axios.get(
@@ -19,12 +17,11 @@ const ViewEmployee = () => {
             },
           }
         );
-        console.log(response);
+
         if (response.data.success) {
           setEmployee(response.data.employee);
         }
       } catch (error) {
-        console.log(error);
         if (error.response && !error.response.data.success) {
           alert(error.response.data.error);
         } else {

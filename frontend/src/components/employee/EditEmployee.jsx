@@ -31,6 +31,7 @@ const EditEmployee = () => {
           setFormData({
             // Set formData state with employee data
             name: employeeData.userId.name,
+            employeeId: employeeData.employeeId,
             maritalStatus: employeeData.maritalStatus,
             designation: employeeData.designation,
             department: employeeData.department._id, // Correctly access dep_name
@@ -86,7 +87,6 @@ const EditEmployee = () => {
     Object.keys(formData).forEach((key) =>
       formDataObj.append(key, formData[key])
     );
-    console.log(formData);
 
     setLoading(true);
     const fetchEmployee = async () => {
@@ -100,7 +100,7 @@ const EditEmployee = () => {
             },
           }
         );
-        console.log(response);
+
         if (response.data.success) {
           alert("employee updated successfully.");
           navigate("/admin-dashboard/employees");
@@ -140,6 +140,25 @@ const EditEmployee = () => {
               placeholder="Insert Name"
               className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
               value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          {/* Employee_Id */}
+          <div>
+            <label
+              htmlFor="employeeId"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Employee ID
+            </label>
+            <input
+              type="text"
+              id="employeeId"
+              name="employeeId"
+              placeholder="Insert employeeId"
+              className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
+              value={formData.employeeId}
               onChange={handleChange}
               required
             />
@@ -325,7 +344,7 @@ const EditEmployee = () => {
 
         <button
           type="submit"
-          className="w-full mt-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-md"
+          className="w-full mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-md"
         >
           Edit Employee
         </button>

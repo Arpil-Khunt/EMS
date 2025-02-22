@@ -111,8 +111,15 @@ export const getEmployee = async (req, res) => {
 export const updateEmployee = async (req, res) => {
   try {
     const { _id } = req.params;
-    const { name, maritalStatus, department, designation, salary, role } =
-      req.body;
+    const {
+      name,
+      maritalStatus,
+      department,
+      designation,
+      salary,
+      role,
+      employeeId,
+    } = req.body;
     const employee = await Employee.findById(_id);
     if (!employee) {
       return res
@@ -131,6 +138,7 @@ export const updateEmployee = async (req, res) => {
             designation: designation,
             salary: salary,
             department: department,
+            employeeId: employeeId,
           },
         }
       );
@@ -161,18 +169,36 @@ export const updateEmployee = async (req, res) => {
         }
       }
 
-      return res
-        .status(200)
-        .json({
-          success: true,
-          employee,
-          message: "employee updated successfully!",
-        });
+      return res.status(200).json({
+        success: true,
+        employee,
+        message: "employee updated successfully!",
+      });
     }
   } catch (error) {
     return res.status(500).json({
       success: false,
       error: "update employee server error, try after some time",
+    });
+  }
+};
+
+export const getEmployeeByDepartment = async (req, res) => {
+  try {
+    const { _id } = req.params;
+    const employee = await Employee.find({ department: _id });
+
+    if (!employee) {
+      return res
+        .status(400)
+        .json({ success: false, error: "employee not found!" });
+    }
+
+    return res.status(200).json({ success: true, employee });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      error: "get employee server error, try after some time",
     });
   }
 };

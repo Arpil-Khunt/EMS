@@ -12,6 +12,8 @@ import EmployeeList from "./components/employee/EmployeeList";
 import AddEmployee from "./components/employee/AddEmployee";
 import ViewEmployee from "./components/employee/ViewEmployee";
 import EditEmployee from "./components/employee/EditEmployee";
+import AddSalary from "./components/salary/AddSalary";
+import SalaryHistory from "./components/salary/SalaryHistory";
 function App() {
   return (
     <BrowserRouter>
@@ -46,6 +48,10 @@ function App() {
             element={<EditEmployee />}
           ></Route>
           <Route
+            path="/admin-dashboard/employees/salary/:_id"
+            element={<SalaryHistory />}
+          ></Route>
+          <Route
             path="/admin-dashboard/departments"
             element={<DepartmentList />}
           ></Route>
@@ -56,6 +62,10 @@ function App() {
           <Route
             path="/admin-dashboard/department/:_id"
             element={<EditDepartment />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/salary/add"
+            element={<AddSalary />}
           ></Route>
         </Route>
       </Routes>

@@ -117,7 +117,7 @@ const EmployeeList = () => {
           <div className="flex justify-between items-center">
             <input
               type="text"
-              placeholder="search By Employee ID"
+              placeholder="search By Employee Name or Department"
               className="px-4 py-0.5 border"
               value={query}
               onChange={handleChange}
