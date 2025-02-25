@@ -6,6 +6,7 @@ import {
   getEmployee,
   updateEmployee,
   getEmployeeByDepartment,
+  getEmpDetail
 } from "../controller/employee.js";
 import { verifyUser } from "../middleware/authMiddleware.js";
 
@@ -18,5 +19,8 @@ router
   .route("/:_id")
   .get(verifyUser, getEmployee)
   .put(verifyUser, upload.single("image"), updateEmployee);
+
+
+  router.get("/profile/:userId",verifyUser,getEmpDetail);
 
 export default router;

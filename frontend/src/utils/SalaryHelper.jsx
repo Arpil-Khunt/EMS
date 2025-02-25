@@ -1,24 +1,24 @@
 export const columns = [
-  { name: "S No", selector: (row) => row.sno, width: "70px" },
+  { name: "S NO", selector: (row) => row.sno, width: "100px" },
   {
     name: "EMP ID",
     selector: (row) => row.employeeId,
-    width: "120px",
+    width: "150px",
   },
   {
     name: "SALARY",
     selector: (row) => row.salary,
-    width: "120px",
+    width: "150px",
     sortable: true,
   },
-  { name: "ALLOWANCE", selector: (row) => row.allowance, width: "120px" },
+  { name: "ALLOWANCE", selector: (row) => row.allowance, width: "150px" },
   {
     name: "DEDUCTION",
     selector: (row) => row.deduction,
-    width: "120px",
+    width: "170px",
     sortable: true,
   },
 
-  { name: "TOTAL", selector: (row) => row.netSalary, width: "120px" },
-  { name: "PAY DATE", selector: (row) => row.payDate, width: "120px" },
+  { name: "TOTAL", selector: (row) => row.netSalary, width: "150px" },
+  { name: "PAY DATE", selector: (row) => row.payDate, width: "150px" },
 ];

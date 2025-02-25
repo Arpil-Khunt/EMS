@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import AdminDashboard from "./pages/AdminDashboard";
-
+import EmployeeDashboard from "./pages/EmployeeDashboard";
 import PrivateRoute from "./utils/PrivateRoute";
 import RoleBaseRoute from "./utils/RoleBaseRoute";
 import AdminSummary from "./components/dashboard/AdminSummary";
@@ -14,11 +14,18 @@ import ViewEmployee from "./components/employee/ViewEmployee";
 import EditEmployee from "./components/employee/EditEmployee";
 import AddSalary from "./components/salary/AddSalary";
 import SalaryHistory from "./components/salary/SalaryHistory";
+import DefaultDashboard from "./pages/DefaultDashboard";
+import EmployeeSummary from "./components/EmployeeDashboard/EmployeeSummary";
+import EmployeeProfile from "./components/EmployeeDashboard/EmployeeProfile";
+import AddLeaves from "./components/leave/AddLeaves";
+import LeaveList from "./components/leave/List";
+import Setting from "./components/EmployeeDashboard/Setting";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Navigate to="/admin-dashboard" />}></Route>
+        <Route path="/" element={<DefaultDashboard />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route
           path="/admin-dashboard"
@@ -68,6 +75,40 @@ function App() {
             element={<AddSalary />}
           ></Route>
         </Route>
+
+        <Route
+          path="/employee-dashboard"
+          element={
+            <PrivateRoute>
+              <RoleBaseRoute requiredRole={["employee"]}>
+                <EmployeeDashboard />
+              </RoleBaseRoute>
+            </PrivateRoute>
+          }
+        >
+          <Route index element={<EmployeeSummary />}></Route>
+          <Route
+            path="/employee-dashboard/profile"
+            element={<EmployeeProfile />}
+          ></Route>
+          <Route
+            path="/employee-dashboard/leaves"
+            element={<LeaveList />}
+          ></Route>
+          <Route
+            path="/employee-dashboard/add-leave"
+            element={<AddLeaves />}
+          ></Route>
+          <Route
+            path="/employee-dashboard/salary/:_id"
+            element={<SalaryHistory />}
+          ></Route>
+          <Route
+            path="/employee-dashboard/setting"
+            element={<Setting />}
+          ></Route>
+        </Route>
+        <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );

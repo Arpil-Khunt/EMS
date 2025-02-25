@@ -4,6 +4,7 @@ import Employee from "../models/employee.js";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import multer from "multer";
+import { error } from "console";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -91,7 +92,7 @@ export const getEmployee = async (req, res) => {
   try {
     const { _id } = req.params;
     const employee = await Employee.findById(_id)
-      .populate("userId", { passweord: 0 })
+      .populate("userId", { password: 0 })
       .populate("department");
 
     if (!employee) {
@@ -200,5 +201,26 @@ export const getEmployeeByDepartment = async (req, res) => {
       success: false,
       error: "get employee server error, try after some time",
     });
+  }
+};
+
+export const getEmpDetail = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const employee = await Employee.findOne({ userId: userId })
+      .populate("userId", { password: 0 })
+
+      .populate("department");
+
+    if (!employee) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Employee Not Found" });
+    }
+    return res.status(200).json({ success: true, employee });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ success: false, error: "get employee detail server side error" });
   }
 };

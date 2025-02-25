@@ -13,6 +13,39 @@ const SalaryHistory = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
+  const customStyles = {
+    rows: {
+      style: {
+        minHeight: "48px", // Adjust row height as needed
+        "&:hover": {
+          backgroundColor: "rgba(0, 0, 0, 0.05)", // Subtle hover effect
+        },
+      },
+    },
+    headCells: {
+      style: {
+        paddingLeft: "21px", // Adjust header cell padding
+        paddingRight: "21px",
+        fontWeight: "600", // Semi-bold font weight
+        fontSize: "1rem",
+        color: "#374151", // Dark gray text color
+      },
+    },
+    cells: {
+      style: {
+        paddingLeft: "21px", // Adjust cell padding
+        paddingRight: "21px",
+        fontSize: "0.9rem",
+        color: "#4B5563", // Slightly lighter gray text color
+      },
+    },
+    pagination: {
+      style: {
+        marginTop: "1rem",
+      },
+    },
+  };
+
   useEffect(() => {
     const fetchSalary = async () => {
       setSalLoading(true);
@@ -102,7 +135,7 @@ const SalaryHistory = () => {
           <div className="text-center">
             <h3 className="text-2xl font-bold">Salary History</h3>
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center px-8">
             <input
               type="text"
               placeholder="search By Employee ID"
@@ -119,7 +152,7 @@ const SalaryHistory = () => {
                 <input type="date" onChange={handleEndDate} />
                 </div> */}
           </div>
-          <div className="mt-5">
+          <div className="mt-5 px-8">
             <DataTable
               columns={columns}
               data={filteredSalaries}
@@ -130,6 +163,7 @@ const SalaryHistory = () => {
                 ) : null
               } //Custom noDataComponent
               noHeader={false} // Always show header
+              customStyles={customStyles}
             />
           </div>
         </div>

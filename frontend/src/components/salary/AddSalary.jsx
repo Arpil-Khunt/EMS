@@ -201,7 +201,6 @@ const AddSalary = () => {
                 type="Date"
                 id="payDate"
                 name="payDate"
-                placeholder="Insert Name"
                 onChange={handleChange}
                 className="mt-1 p-2 block w-full border border-gray-300 rounded-md"
                 required

@@ -1,14 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 import {
   FaTachometerAlt,
   FaUsers,
-  FaBuilding,
   FaCogs,
   FaCalendarAlt,
 } from "react-icons/fa";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
-const AdminSidebar = () => {
+const EmployeeSidebar = () => {
+  const { user } = useAuth();
   return (
     <div className="bg-gray-800 text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64">
       <div className="bg-teal-600 h-12 flex items-center justify-center">
@@ -16,7 +17,7 @@ const AdminSidebar = () => {
       </div>
       <div className="px-4">
         <NavLink
-          to="/admin-dashboard"
+          to="/employee-dashboard"
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""
@@ -28,61 +29,46 @@ const AdminSidebar = () => {
           <span>Dashboard</span>
         </NavLink>
         <NavLink
-          to="/admin-dashboard/employees"
+          to="/employee-dashboard/profile"
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 block py-2.5 px-4 rounded`
           }
-          end
         >
           <FaUsers />
-          <span>Employee</span>
+          <span>My Profile</span>
         </NavLink>
+
         <NavLink
-          to="/admin-dashboard/departments"
+          to="/employee-dashboard/leaves"
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 block py-2.5 px-4 rounded`
           }
-          end
-        >
-          <FaBuilding />
-          <span>Department</span>
-        </NavLink>
-        <NavLink
-          to="/admin-dashboard"
-          className={({ isActive }) =>
-            `${
-              isActive ? "bg-teal-500" : ""
-            } flex items-center space-x-4 block py-2.5 px-4 rounded`
-          }
-          end
         >
           <FaCalendarAlt />
-          <span>Leaves</span>
+          <span>Leave</span>
         </NavLink>
         <NavLink
-          to="/admin-dashboard/salary/add"
+          to={`/employee-dashboard/salary/${user._id}`}
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 block py-2.5 px-4 rounded`
           }
-          end
         >
           <FaMoneyBillTrendUp />
           <span>Salary</span>
         </NavLink>
         <NavLink
-          to="/admin-dashboard"
+          to="/employee-dashboard/setting"
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 block py-2.5 px-4 rounded`
           }
-          end
         >
           <FaCogs />
           <span>Setting</span>
@@ -92,4 +78,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default AdminSidebar;
+export default EmployeeSidebar;
