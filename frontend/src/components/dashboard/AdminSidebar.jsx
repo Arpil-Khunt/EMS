@@ -52,7 +52,7 @@ const AdminSidebar = () => {
           <span>Department</span>
         </NavLink>
         <NavLink
-          to="/admin-dashboard"
+          to="/admin-dashboard/leaves"
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""
@@ -76,7 +76,7 @@ const AdminSidebar = () => {
           <span>Salary</span>
         </NavLink>
         <NavLink
-          to="/admin-dashboard"
+          to="/admin-dashboard/setting"
           className={({ isActive }) =>
             `${
               isActive ? "bg-teal-500" : ""

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/authContext";
 
 const Setting = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const Setting = () => {
     newPassword: "",
     confirmPassword: "",
   });
+  const { user } = useAuth();
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleChange = (event) => {
@@ -30,8 +32,13 @@ const Setting = () => {
           }
         );
         if (response.data.success) {
+          setError("");
           alert("password updated successfully.");
-          navigate("/employee-dashboard");
+          if (user.role === "admin") {
+            navigate("/admin-dashboard");
+          } else {
+            navigate("/employee-dashboard");
+          }
         }
       } catch (error) {
         if (error.response && !error.response.data.success) {

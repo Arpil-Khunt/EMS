@@ -20,7 +20,9 @@ import EmployeeProfile from "./components/EmployeeDashboard/EmployeeProfile";
 import AddLeaves from "./components/leave/AddLeaves";
 import LeaveList from "./components/leave/List";
 import Setting from "./components/EmployeeDashboard/Setting";
-
+import Table from "./components/leave/Table";
+import LeaveDetails from "./components/leave/LeaveDetails";
+import LeaveHistory from "./components/leave/LeaveHistory";
 function App() {
   return (
     <BrowserRouter>
@@ -59,6 +61,10 @@ function App() {
             element={<SalaryHistory />}
           ></Route>
           <Route
+            path="/admin-dashboard/employees/leave/:_id"
+            element={<LeaveHistory />}
+          ></Route>
+          <Route
             path="/admin-dashboard/departments"
             element={<DepartmentList />}
           ></Route>
@@ -74,6 +80,12 @@ function App() {
             path="/admin-dashboard/salary/add"
             element={<AddSalary />}
           ></Route>
+          <Route path="/admin-dashboard/leaves" element={<Table />}></Route>
+          <Route
+            path="/admin-dashboard/leaves/:_id"
+            element={<LeaveDetails />}
+          ></Route>
+          <Route path="/admin-dashboard/setting" element={<Setting />}></Route>
         </Route>
 
         <Route
