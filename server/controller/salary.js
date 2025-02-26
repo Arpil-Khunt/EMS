@@ -11,10 +11,12 @@ export const getSalary = async (req, res) => {
     );
     if (!findSalary || findSalary.length === 0) {
       const employee = await Employee.findOne({ userId: _id });
-      findSalary = await Salary.find({ employeeId: employee._id }).populate(
-        "employeeId",
-        "employeeId"
-      );
+      if (employee) {
+        findSalary = await Salary.find({ employeeId: employee._id }).populate(
+          "employeeId",
+          "employeeId"
+        );
+      }
     }
 
     return res.status(200).json({ success: true, findSalary });

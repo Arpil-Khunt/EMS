@@ -1,10 +1,10 @@
 import { extname } from "path";
-import Department from "../models/department.js";
+
 import Employee from "../models/employee.js";
 import User from "../models/user.js";
 import bcrypt from "bcrypt";
 import multer from "multer";
-import { error } from "console";
+
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

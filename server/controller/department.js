@@ -75,23 +75,22 @@ export const updateDepartment = async (req, res) => {
 export const deleteDepartment = async (req, res) => {
   try {
     const { _id } = req.params;
-    const deleteDep = await Department.findByIdAndDelete(_id);
+    const deleteDep = await Department.findById(_id);
     if (!deleteDep) {
       return res
         .status(400)
         .json({ success: false, error: "sorry, not such department found!" });
     }
-    res
-      .status(200)
-      .json({
-        success: true,
-        deleteDep,
-        message: "department deleted successfully",
-      });
+    await deleteDep.deleteOne();
+    return res.status(200).json({
+      success: true,
+      deleteDep,
+      message: "department deleted successfully",
+    });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: "server side error occur, please try after some time!",
+      error: "department delete server side error, please try after some time!",
     });
   }
 };

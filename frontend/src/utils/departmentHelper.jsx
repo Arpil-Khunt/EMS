@@ -14,26 +14,31 @@ export const DepartmentButtons = ({ _id, onDepartmentDelete }) => {
   const navigate = useNavigate();
 
   const handleDelete = async (id) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:8080/api/department/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
+    let permission = confirm("Do you want to delete?");
+    if (permission) {
+      try {
+        const response = await axios.delete(
+          `http://localhost:8080/api/department/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        if (response.data.success) {
+          onDepartmentDelete(id);
+        } else {
+          alert(response.data.error);
+          navigate("/admin-dashboard/departments");
         }
-      );
-      if (response.data.success) {
-        onDepartmentDelete(id);
-      } else {
-        alert(response.data.error);
-        navigate("/admin-dashboard/departments");
+      } catch (error) {
+        if (error.response && !error.response.data.success) {
+          alert(error.response.data.error);
+          navigate("/admin-dashboard/departments");
+        }
       }
-    } catch (error) {
-      if (error.response && !error.response.data.success) {
-        alert(error.response.data.error);
-        navigate("/admin-dashboard/departments");
-      }
+    } else {
+      navigate("/admin-dashboard/departments");
     }
   };
   return (
