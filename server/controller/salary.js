@@ -5,17 +5,23 @@ export const getSalary = async (req, res) => {
   try {
     let findSalary;
     const { _id } = req.params;
-    findSalary = await Salary.find({ employeeId: _id }).populate(
-      "employeeId",
-      "employeeId"
-    );
-    if (!findSalary || findSalary.length === 0) {
+    const user = req.user;
+    if (user.role === "admin") {
+      findSalary = await Salary.find({ employeeId: _id }).populate(
+        "employeeId",
+        "employeeId"
+      );
+    } else {
       const employee = await Employee.findOne({ userId: _id });
       if (employee) {
         findSalary = await Salary.find({ employeeId: employee._id }).populate(
           "employeeId",
           "employeeId"
         );
+      } else {
+        return res
+          .status(404)
+          .json({ success: false, error: "employee not found" });
       }
     }
 

@@ -23,6 +23,8 @@ import Setting from "./components/EmployeeDashboard/Setting";
 import Table from "./components/leave/Table";
 import LeaveDetails from "./components/leave/LeaveDetails";
 import LeaveHistory from "./components/leave/LeaveHistory";
+import Attendance from "./components/attendance/Attendance";
+import AttendanceReport from "./components/attendance/AttendanceReport";
 function App() {
   return (
     <BrowserRouter>
@@ -86,6 +88,14 @@ function App() {
             element={<LeaveDetails />}
           ></Route>
           <Route path="/admin-dashboard/setting" element={<Setting />}></Route>
+          <Route
+            path="/admin-dashboard/attendance"
+            element={<Attendance />}
+          ></Route>
+          <Route
+            path="/admin-dashboard/attendance-report"
+            element={<AttendanceReport />}
+          ></Route>
         </Route>
 
         <Route

@@ -7,7 +7,9 @@ import {
   FaCogs,
   FaCalendarAlt,
 } from "react-icons/fa";
+import { AiOutlineFileText } from "react-icons/ai";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { MdEventAvailable } from "react-icons/md";
 const AdminSidebar = () => {
   return (
     <div className="bg-gray-800 text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64">
@@ -74,6 +76,30 @@ const AdminSidebar = () => {
         >
           <FaMoneyBillTrendUp />
           <span>Salary</span>
+        </NavLink>
+        <NavLink
+          to="/admin-dashboard/attendance"
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-teal-500" : ""
+            } flex items-center space-x-4 block py-2.5 px-4 rounded`
+          }
+          end
+        >
+          <MdEventAvailable />
+          <span>Attendance</span>
+        </NavLink>
+        <NavLink
+          to="/admin-dashboard/attendance-report"
+          className={({ isActive }) =>
+            `${
+              isActive ? "bg-teal-500" : ""
+            } flex items-center space-x-4 block py-2.5 px-4 rounded`
+          }
+          end
+        >
+          <AiOutlineFileText />
+          <span>Attendance Report</span>
         </NavLink>
         <NavLink
           to="/admin-dashboard/setting"

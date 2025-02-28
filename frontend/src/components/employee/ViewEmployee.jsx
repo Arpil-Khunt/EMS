@@ -50,36 +50,40 @@ const ViewEmployee = () => {
 
         <div>
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Name:</p>
+            <p className="text-lg font-bold">Name: </p>
             <p className="font-medium">{employee.userId.name.toUpperCase()}</p>
           </div>
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Email:</p>
+            <p className="text-lg font-bold">Email: </p>
             <p className="font-medium">{employee.userId.email}</p>
           </div>
 
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Employee ID:</p>
+            <p className="text-lg font-bold">Employee ID: </p>
             <p className="font-medium">{employee.employeeId}</p>
           </div>
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Date Of Birth:</p>
+            <p className="text-lg font-bold">Date Of Birth: </p>
             <p className="font-medium">
               {new Date(employee.dob).toLocaleDateString("en-CA")}
             </p>
           </div>
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Gender:</p>
+            <p className="text-lg font-bold">Salary: </p>
+            <p className="font-medium">{employee.salary}</p>
+          </div>
+          <div className="flex space-x-3 mb-5">
+            <p className="text-lg font-bold">Gender: </p>
             <p className="font-medium">{employee.gender.toUpperCase()}</p>
           </div>
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Department:</p>
+            <p className="text-lg font-bold">Department: </p>
             <p className="font-medium">
               {employee.department.dep_name.toUpperCase()}
             </p>
           </div>
           <div className="flex space-x-3 mb-5">
-            <p className="text-lg font-bold">Marital Status:</p>
+            <p className="text-lg font-bold">Marital Status: </p>
             <p className="font-medium">
               {employee.maritalStatus.toUpperCase()}
             </p>
